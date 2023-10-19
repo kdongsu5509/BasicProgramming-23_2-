@@ -1,16 +1,88 @@
-// a의 b승 -> a를 b번 곱하면 ㅆㄱㄴ
+// 마방진 확인하기
 
-// 행렬의 거듭제곱은???
-/*재귀를 사용해야 효율적이다
+/*idea 1
 
-
-지수가 홀/짝 으로 경우 나누기
-
-지수가 짝 --> 지수/2 * 지수/2
-
-지수가 홀 --> 지수/2 * 지수/2 * 밑(1개)
-    ->이래되뿌면 짝수가 된다잉
-
-
-공통 == b가1일떄 , 혹은 a의 b승이 a가 될 때(똑같은 말이긴 해 ㅋㅋ)
+사이즈 확인 ->
+마방진 만들어서 하나하나 위치에 따라 같은 값이 있는 지 비교하기
 */
+
+/*idea 2
+
+마법상수 구하기 = ((n*n+1)*n)/2
+
+*/
+
+#include <stdio.h>
+
+#define MAX 100
+
+int compArray[MAX][MAX];
+
+int check(int n);
+
+int main()
+{
+    int N;
+    scanf("%d", &N);
+    for (int x = 0; x < N; x++)
+    {
+        for (int y = 0; y < N; y++)
+        {
+            int temp;
+            scanf("%d", &temp);
+            compArray[x][y] = temp;
+        }
+    }
+
+    int key = check(N);
+    // printf("%s", "that is magic-----------------//");
+    // for (int x = 0; x < N; x++)
+    // {
+    //     for (int y = 0; y < N; y++)
+    //     {
+
+    //         printf("%d", compArray[x][y]);
+    //     }
+    // }
+
+    if (key)
+    {
+        printf("%d", ((N * N + 1) * N) / 2);
+    }
+    else
+    {
+        printf("%d", 0);
+    }
+}
+
+int check(int n)
+{
+    int row = 0, col = n / 2;
+    int num = 1;
+    int maxNum = n * n;
+
+    for (; num <= maxNum; num++)
+    {
+        if (compArray[row][col] != num)
+        {
+            return 0;
+        }
+        else if (compArray[row][col] == num)
+        {
+            compArray[row][col] = num * -1;
+        }
+
+        int nextRow = (row - 1 + n) % n;
+        int nextCol = (col + 1) % n;
+
+        if (compArray[nextRow][nextCol] < 0)
+        {
+            row = (row + 1) % n;
+        }
+        else
+        {
+            row = nextRow;
+            col = nextCol;
+        }
+    }
+}
