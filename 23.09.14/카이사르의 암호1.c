@@ -11,7 +11,7 @@ int main()
     int b = getchar();
     int c = getchar();
 
-    int na, nb, nc;
+        int na, nb, nc;
     na = caesar(a);
     nb = caesar(b);
     nc = caesar(c);
