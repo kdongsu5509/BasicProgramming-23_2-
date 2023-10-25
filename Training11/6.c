@@ -29,15 +29,16 @@ void rotate(int n, int A[][MAX], int B[][MAX])
     {
         for (int y = 0; y < n; y++)
         {
-            if (n - x - 1 < 0)
-            {
-                x = n - 1;
-                B[y][n - x - 1] = A[x][y];
-            }
-            else
-            {
-                B[y][n - x - 1] = A[x][y];
-            }
+            // if (n - x - 1 < 0)
+            // {
+            //     x = n - 1;
+            //     B[y][n - x - 1] = A[x][y];
+            // }
+            // else
+            // {
+            //     B[y][n - x - 1] = A[x][y];
+            // }
+            B[y][n - x - 1] = A[x][y];
         }
     }
 }

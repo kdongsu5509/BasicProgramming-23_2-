@@ -3,10 +3,12 @@
 #define MAX 100
 
 int square[MAX][MAX];
+/*c언어에서 전역변수 및 정적 배열은 자동으로 0으로 초기화함.
 
-/* Make n * n magic square in a 2-dimensional array, square[].
- * It is guaranteed that n is always odd.
- */
+전역 변수와 정적 배열은 데이터 세그먼트에 저장되는데
+데이터 세그먼트에 저장된 데이터는 컴파일러 또는 런타임 시스템에 의해
+자동으로 0으로 초기화 된다.*/
+
 void magic(int n);
 
 int main()
